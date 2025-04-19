@@ -1,0 +1,12 @@
+.section-title {
+  .title {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 60px;
+    color: $color_black;
+    @include media(772) {
+      line-height: unset;
+      font-size: 30px;
+    }
+  }
+}

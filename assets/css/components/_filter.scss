@@ -1,0 +1,32 @@
+.filter-bar {
+  overflow-x: auto;
+  .filter-btn {
+    background-color: $color_graylight;
+    border-radius: 50px;
+    font-weight: 500;
+    color: $color_black;
+    padding: 6px 16px;
+    border: none;
+    min-width: fit-content;
+    .filter-btn.active {
+      background-color: $color_primary_2;
+    }
+    .promo-box {
+      background-color: $color_primary;
+      color: $color_white;
+      flex: 1 1 300px;
+      min-width: 280px;
+    }
+    .promo-box .highlight {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .fees-box {
+      background-color: $color_white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      min-width: 280px;
+      flex: 1 1 300px;
+    }
+  }
+}

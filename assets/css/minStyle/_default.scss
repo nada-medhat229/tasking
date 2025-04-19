@@ -1,0 +1,51 @@
+p,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: unset;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+input {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+.overlay {
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.26);
+  position: fixed;
+  z-index: 99999999;
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+body,html{
+overflow-x: hidden;
+}
+%between-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,138 @@
+.header-container {
+  position: sticky;
+  top: 0px;
+  z-index: 9999999;
+  background: #ffffff;
+  backdrop-filter: blur(2px);
+  .delivery-toggle {
+    border-radius: 7px;
+    background: $color_gray;
+    color: #46515d;
+    .btn {
+      margin: 3px;
+      border: none;
+      &.active {
+        background: $color_white;
+        color: $color_black;
+      }
+    }
+  }
+  .header-mobile {
+    display: none;
+    .logo {
+      img {
+        min-height: 40px;
+      }
+    }
+    .icon-box {
+      i {
+        font-size: 19px;
+        cursor: pointer;
+        color: #0e1114;
+      }
+    }
+  }
+  .header-web {
+    display: block;
+  }
+  @include media(1200) {
+    .header-mobile {
+      display: block;
+    }
+    .header-web {
+      display: none;
+    }
+  }
+}
+html[dir="ltr"] {
+  .sidebar {
+    left: -500px;
+    &.open {
+      left: 0;
+    }
+  }
+}
+
+// RTL direction
+html[dir="rtl"] {
+  .sidebar {
+    right: -500px;
+    &.open {
+      right: 0;
+    }
+  }
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 999999999999;
+  background-color: $color_white;
+  width: 280px;
+  min-height: 100vh;
+  border-right: 1px solid $color_gray;
+  transition: all 0.3s ease-in-out;
+  padding: 20px 0;
+
+  .user-info {
+    .avatar img {
+      width: 60px;
+      height: 60px;
+    }
+
+    h6 {
+      color: $color_black;
+    }
+  }
+
+  .slide-nav {
+    border-bottom: 1px solid #e2e5e9;
+    .nav-item {
+      &:not(&:last-of-type) {
+        border-bottom: 1px solid #e2e5e9;
+      }
+    }
+
+    .nav-link {
+      color: $color_gray_dark;
+      font-weight: 500;
+
+      &:hover {
+        color: $color_primary;
+      }
+
+      i {
+        color: $color_primary;
+      }
+    }
+  }
+  .app-section {
+    small {
+      font-size: 12px;
+      color: $color_gray_dark;
+    }
+  }
+  .images-list {
+    margin-top: 24px;
+
+    img {
+      height: 40px;
+    }
+  }
+  .dilavary-item {
+    .text {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .about-us {
+    a {
+      color: #46515d;
+      .about-us-item {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}

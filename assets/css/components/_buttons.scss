@@ -1,0 +1,30 @@
+.form-select:focus {
+  border-color: #dee2e6;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}
+.btn.cart:hover,
+.btn-main{
+  background: $color_primary;
+  color: $color_white;
+}
+.btn-login:hover,
+.btn-login{
+  background: $color_gray;
+}
+.lang-item {
+  appearance: none;         // For most modern browsers
+  -webkit-appearance: none; // For Safari and Chrome
+  -moz-appearance: none;    // For Firefox
+  background-image: none;   // Remove background icon if any
+  padding: 0 6px;
+   border:none
+}
+select:focus-visible {
+  outline-offset: 0;
+  outline: none;
+}

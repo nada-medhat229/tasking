@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#4ABB82" />
+    <meta name="description" content="" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
+    <link href="./assets/css/plugins/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/plugins/all.min.css" />
+    <link rel="stylesheet" href="./assets/css/plugins/swiper.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css?v=1" />
+    <title>Eatme UI</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="header-container py-2 border-bottom">
+      <header class="wrapper header-web">
+        <div class="container">
+          <div class="row align-items-center justify-content-between pt-2">
+            <div class="row col-md-6 px-0">
+              <!-- Left Section: Logo & Menu -->
+              <div class="col-md-3 d-flex align-items-center gap-3 px-0">
+                <button class="btn p-0 me-2 toggleSidebar">
+                  <i class="fa-solid fa-bars fs-5"></i>
+                </button>
+                <img
+                  src="../assets/images/logo.svg"
+                  alt="Eatme Logo"
+                  class="img-fluid w-100"
+                />
+              </div>
+
+              <!-- Center Left: Delivery / Pickup / Location -->
+              <div
+                class="col-md-9 d-flex align-items-center gap-2 justify-content-center"
+              >
+                <div class="delivery-toggle d-flex">
+                  <button
+                    class="btn active me-2"
+                    onclick="setDeliveryMode(this)"
+                  >
+                    Delivery
+                  </button>
+                  <button class="btn" onclick="setDeliveryMode(this)">
+                    Pickup
+                  </button>
+                </div>
+                <div class="dropdown">
+                  <button
+                    id="cityDropdownBtn"
+                    class="btn btn-light dropdown-toggle d-flex align-items-center"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src="../assets/images/loc.svg"
+                      alt=""
+                      width="20"
+                      class="me-2"
+                    />
+                    <span id="selectedCity">Kuwait City</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Kuwait City')"
+                        >Kuwait City</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Hawally')"
+                        >Hawally</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        onclick="selectCity('Salmiya')"
+                        >Salmiya</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="row col-md-6 px-0">
+              <!-- Center Right: Search Input -->
+              <div class="col-md-5 px-0">
+                <div class="input-group bg-light rounded">
+                  <span class="input-group-text bg-transparent border-0">
+                    <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control border-0 bg-light"
+                    placeholder="Food, drinks or Stores"
+                  />
+                </div>
+              </div>
+
+              <!-- Right Section: Cart / Auth / Language -->
+              <div
+                class="col-md-7 d-flex justify-content-end align-items-center gap-1"
+              >
+                <button class="btn btn-main cart d-flex align-items-center">
+                  <i class="fa-solid fa-cart-shopping me-1"></i> Cart 0
+                </button>
+                <button class="btn btn-login">Sign up</button>
+                <button class="btn btn-login">Log in</button>
+                <div class="menu-box d-flex align-items-center">
+                  <select
+                    class="lang-item"
+                    id="pageSelect"
+                    onchange="navigatePage()"
+                  >
+                    <option value="index.html" selected>الانجليزية</option>
+                    <option value="index-ar.html">العربية</option>
+                  </select>
+                  <img src="../assets/images/lang1.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="header-mobile">
+        <div class="container">
+          <div class="d-flex align-items-center gap-3">
+            <div class="logo">
+              <a href="#">
+                <img
+                  src="./assets/images/smallLogo.svg"
+                  alt=""
+                  class="img-fluid"
+                />
+              </a>
+            </div>
+            <div class="input-group bg-light rounded">
+              <span class="input-group-text bg-transparent border-0">
+                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control border-0 bg-light"
+                placeholder="Food, drinks or Stores"
+              />
+            </div>
+            <div class="icon-box d-flex align-items-center gap-3 px-2">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <i class="fa-solid fa-bell"></i>
+              <i class="fa-solid fa-bars toggleSidebar"></i>
+            </div>
+          </div>
+          <div
+            class="d-flex align-items-center pt-4 justify-content-between gap-3"
+          >
+            <div class="dropdown">
+              <button
+                id="cityDropdownBtn"
+                class="btn btn-light dropdown-toggle d-flex align-items-center"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="../assets/images/loc.svg"
+                  alt=""
+                  width="20"
+                  class="me-2"
+                />
+                <span id="selectedCity">Kuwait City</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="selectCity('Kuwait City')"
+                    >Kuwait City</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="selectCity('Hawally')"
+                    >Hawally</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="selectCity('Salmiya')"
+                    >Salmiya</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="delivery-toggle d-flex">
+              <button class="btn active me-2" onclick="setDeliveryMode(this)">
+                Delivery
+              </button>
+              <button class="btn" onclick="setDeliveryMode(this)">
+                Pickup
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <section class="category py-3">
+      <div class="container">
+        <div class="swiper category-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category1.png" alt="" />
+                <p>Breakfast</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category2.png" alt="" />
+                <p>Burger</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category3.png" alt="" />
+                <p>Pizza</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category4.png" alt="" />
+                <p>Asian</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category5.png" alt="" />
+                <p>American</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category6.png" alt="" />
+                <p>Healthy</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category7.png" alt="" />
+                <p>Coffe</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category8.png" alt="" />
+                <p>Fast food</p>
+              </button>
+            </div>
+
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category1.png" alt="" />
+                <p>Breakfast</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category2.png" alt="" />
+                <p>Burger</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category3.png" alt="" />
+                <p>Pizza</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category4.png" alt="" />
+                <p>Asian</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category5.png" alt="" />
+                <p>American</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category6.png" alt="" />
+                <p>Healthy</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category7.png" alt="" />
+                <p>Coffe</p>
+              </button>
+            </div>
+            <div class="swiper-slide">
+              <button class="btn category-pill">
+                <img src="./assets/images/category8.png" alt="" />
+                <p>Fast food</p>
+              </button>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+    <section class="filter-bar-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filter-bar d-flex gap-2 pt-3">
+              <button class="btn filter-btn">
+                Sort by : Recommended
+                <i class="fas fa-chevron-down ms-2"></i>
+              </button>
+              <button class="btn filter-btn">
+                <i class="fas fa-tags"></i> Discount Range
+                <i class="fas fa-chevron-down ms-2"></i>
+              </button>
+              <button class="btn filter-btn">
+                <i class="fas fa-star"></i> Rate
+                <i class="fas fa-chevron-down ms-2"></i>
+              </button>
+              <button class="btn filter-btn active">
+                <i class="fas fa-motorcycle"></i> Max delivery fees
+                <i class="fas fa-chevron-down ms-2"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Picks -->
+    <section class="featured-stores Picks py-4" id="Picks">
+      <div class="container">
+        <div
+          class="d-flex justify-content-between align-center mb-3 flex-wrap gap-4"
+        >
+          <h2>New Picks</h2>
+          <div class="see-all">
+            <a href="#">See all</a>
+            <div class="swiper-nav">
+              <button
+                class="swiper-button-prev Picks-swiper-button-prev"
+              ></button>
+              <button
+                class="swiper-button-next Picks-swiper-button-next"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="swiper Picks-swiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/pick1.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite active">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store1.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store2.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store3.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store4.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            sd
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- flash-offers -->
+    <section class="flash-offers-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="swiper flash-swiper flash-offers">
+              <div
+                class="d-flex justify-content-between flash-title-section align-items-center flex-wrap gap-3"
+              >
+                <h2 class="flash-title">
+                  <img
+                    src="./assets/images/flashicon1.png"
+                    alt="Flash Icon"
+                    width="40"
+                  />
+                  Flash Offers
+                </h2>
+                <div class="swiper-nav">
+                  <button
+                    class="swiper-button-prev flash-swiper-button-prev"
+                  ></button>
+                  <button
+                    class="swiper-button-next flash-swiper-button-next"
+                  ></button>
+                </div>
+              </div>
+
+              <div class="swiper-wrapper mb-5">
+                <!-- Each offer card -->
+                <div class="swiper-slide offer-card">
+                  <div class="image-container">
+                    <img src="./assets/images/flash.png" alt="Nola Offer" />
+                    <div class="timer-discount">
+                      <span class="timer">
+                        <svg width="15" height="15">
+                          <circle class="bg" cx="7.5" cy="7.5" r="6" />
+                          <circle class="progress" cx="7.5" cy="7.5" r="6" />
+                        </svg>
+                        <span> 01:59:30 </span>
+                      </span>
+                      <span class="discount">70%</span>
+                    </div>
+
+                    <span class="flash-badge">
+                      <img src="./assets/images/flashscreen.png" />
+                      Flash Offer</span
+                    >
+                    <button class="favorite"></button>
+                  </div>
+                  <div class="offer-content">
+                    <img
+                      src="./assets/images/nola.png"
+                      alt="Nola Logo"
+                      class="brand-logo"
+                    />
+                    <h3>Nola</h3>
+                    <p>50% discount on chocolate cake from Nola.</p>
+                    <div class="price">
+                      <span class="new">10KD</span>
+                      <span class="old">40KD</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide offer-card">
+                  <div class="image-container">
+                    <img
+                      src="./assets/images/flash2.png"
+                      alt="Starbucks Offer"
+                    />
+                    <div class="timer-discount">
+                      <span class="timer">
+                        <svg width="15" height="15">
+                          <circle class="bg" cx="7.5" cy="7.5" r="6" />
+                          <circle class="progress" cx="7.5" cy="7.5" r="6" />
+                        </svg>
+                        <span> 01:59:30 </span>
+                      </span>
+                      <span class="discount">50%</span>
+                    </div>
+                    <span class="flash-badge">
+                      <img src="./assets/images/flashscreen.png" />
+                      Flash Offer</span
+                    >
+                    <button class="favorite"></button>
+                  </div>
+                  <div class="offer-content">
+                    <img
+                      src="./assets/images/nola1.png"
+                      alt="Starbucks Logo"
+                      class="brand-logo"
+                    />
+                    <h3>Starbucks</h3>
+                    <p>50% discount on any product from Starbucks.</p>
+                    <div class="price">
+                      <span class="new">15KD</span>
+                      <span class="old">30KD</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide offer-card">
+                  <div class="image-container">
+                    <img
+                      src="./assets/images/flash3.png"
+                      alt="Papa Johns Offer"
+                    />
+                    <div class="timer-discount">
+                      <span class="timer">
+                        <svg width="15" height="15">
+                          <circle class="bg" cx="7.5" cy="7.5" r="6" />
+                          <circle class="progress" cx="7.5" cy="7.5" r="6" />
+                        </svg>
+                        <span> 01:59:30 </span>
+                      </span>
+                      <span class="discount">60%</span>
+                    </div>
+                    <span class="flash-badge">
+                      <img src="./assets/images/flashscreen.png" />
+                      Flash Offer</span
+                    >
+                    <button class="favorite"></button>
+                  </div>
+                  <div class="offer-content">
+                    <img
+                      src="./assets/images/nola2.png"
+                      alt="Papa Johns Logo"
+                      class="brand-logo"
+                    />
+                    <h3>Papa Johns</h3>
+                    <p>50% discount on selected pizza from Papa Johns.</p>
+                    <div class="price">
+                      <span class="new">10KD</span>
+                      <span class="old">40KD</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide offer-card">
+                  <div class="image-container">
+                    <img src="./assets/images/flash.png" alt="Nola Offer" />
+                    <div class="timer-discount">
+                      <span class="timer">
+                        <svg width="15" height="15">
+                          <circle class="bg" cx="7.5" cy="7.5" r="6" />
+                          <circle class="progress" cx="7.5" cy="7.5" r="6" />
+                        </svg>
+                        <span> 01:59:30 </span>
+                      </span>
+                      <span class="discount">70%</span>
+                    </div>
+
+                    <span class="flash-badge">
+                      <img src="./assets/images/flashscreen.png" />
+                      Flash Offer</span
+                    >
+                    <button class="favorite"></button>
+                  </div>
+                  <div class="offer-content">
+                    <img
+                      src="./assets/images/nola.png"
+                      alt="Nola Logo"
+                      class="brand-logo"
+                    />
+                    <h3>Nola</h3>
+                    <p>50% discount on chocolate cake from Nola.</p>
+                    <div class="price">
+                      <span class="new">10KD</span>
+                      <span class="old">40KD</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide offer-card">
+                  <div class="image-container">
+                    <img
+                      src="./assets/images/flash2.png"
+                      alt="Starbucks Offer"
+                    />
+                    <div class="timer-discount">
+                      <span class="timer">
+                        <svg width="15" height="15">
+                          <circle class="bg" cx="7.5" cy="7.5" r="6" />
+                          <circle class="progress" cx="7.5" cy="7.5" r="6" />
+                        </svg>
+                        <span> 01:59:30 </span>
+                      </span>
+                      <span class="discount">50%</span>
+                    </div>
+                    <span class="flash-badge">
+                      <img src="./assets/images/flashscreen.png" />
+                      Flash Offer</span
+                    >
+                    <button class="favorite"></button>
+                  </div>
+                  <div class="offer-content">
+                    <img
+                      src="./assets/images/nola1.png"
+                      alt="Starbucks Logo"
+                      class="brand-logo"
+                    />
+                    <h3>Starbucks</h3>
+                    <p>50% discount on any product from Starbucks.</p>
+                    <div class="price">
+                      <span class="new">15KD</span>
+                      <span class="old">30KD</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide offer-card">
+                  <div class="image-container">
+                    <img
+                      src="./assets/images/flash3.png"
+                      alt="Papa Johns Offer"
+                    />
+                    <div class="timer-discount">
+                      <span class="timer">
+                        <svg width="15" height="15">
+                          <circle class="bg" cx="7.5" cy="7.5" r="6" />
+                          <circle class="progress" cx="7.5" cy="7.5" r="6" />
+                        </svg>
+                        <span> 01:59:30 </span>
+                      </span>
+                      <span class="discount">60%</span>
+                    </div>
+                    <span class="flash-badge">
+                      <img src="./assets/images/flashscreen.png" />
+                      Flash Offer</span
+                    >
+                    <button class="favorite"></button>
+                  </div>
+                  <div class="offer-content">
+                    <img
+                      src="./assets/images/nola2.png"
+                      alt="Papa Johns Logo"
+                      class="brand-logo"
+                    />
+                    <h3>Papa Johns</h3>
+                    <p>50% discount on selected pizza from Papa Johns.</p>
+                    <div class="price">
+                      <span class="new">10KD</span>
+                      <span class="old">40KD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <img
+                  src="./assets/images/flashicon2.png"
+                  alt="flashicon2"
+                  width="55"
+                />
+                <img
+                  src="./assets/images/flashicon3.png"
+                  alt="flashicon2"
+                  width="40"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- featured-stores -->
+    <section class="featured-stores py-4">
+      <div class="container">
+        <div
+          class="d-flex justify-content-between align-center mb-3 flex-wrap gap-4"
+        >
+          <h2>Featured Stores</h2>
+          <div class="see-all">
+            <a href="#">See all</a>
+            <div class="swiper-nav">
+              <button
+                class="swiper-button-prev featured-swiper-button-prev"
+              ></button>
+              <button
+                class="swiper-button-next featured-swiper-button-next"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="swiper featured-swiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/pick1.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite active">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store1.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store2.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store3.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="store-card">
+                <div class="store-img">
+                  <img
+                    src="./assets/images/store4.png"
+                    alt="L&L Hawaiian Barbecue"
+                    class="img-fluid"
+                  />
+                  <span class="status open">Open Now</span>
+                  <button class="favorite">
+                    <i class="fa-solid fa-heart"></i>
+                  </button>
+                </div>
+                <div class="store-info">
+                  <div class="d-flex align-items-center gap-1">
+                    <h3 class="store-info-header">The Habit Burger Grill</h3>
+                    <span class="rating"
+                      ><i class="fa-solid fa-star"></i> 4.7</span
+                    >
+                  </div>
+                  <p class="category-item">Hawaiian, Burgers</p>
+                  <div class="details">
+                    <span
+                      ><i class="fa-regular fa-clock"></i> Within 33 Min.</span
+                    >
+                    <span><i class="fa-solid fa-bicycle"></i> 0.95 KWD</span>
+                  </div>
+                </div>
+                <a href="#" class="card-link"></a>
+              </div>
+            </div>
+            sd
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer py-5 text-white">
+      <div class="container">
+        <div class="footer-top border-bottom pb-4 mb-4">
+          <ul class="nav d-flex justify-content-between flex-wrap gap-4">
+            <li><a href="#" class="footer-link">About us</a></li>
+            <li><a href="#" class="footer-link">FAQ</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Terms and Conditions</a></li>
+            <li><a href="#" class="footer-link">Contact Us</a></li>
+            <li>
+              <div class="menu-box d-flex align-items-center gap-1">
+                <select
+                  class="lang-item"
+                  id="pageSelect"
+                  onchange="navigatePage()"
+                >
+                  <option value="index.html" selected>الانجليزية</option>
+                  <option value="index-ar.html">العربية</option>
+                </select>
+                <img src="../assets/images/lang1.png" alt="" />
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <img
+              src="./assets/images/logofooter.png"
+              alt="logofooter"
+              width="175"
+            />
+            <div class="d-flex flex-column gap-2 mt-3">
+              <img
+                src="../assets/images/playstore.png"
+                alt="Google Play"
+                width="150"
+              />
+              <img
+                src="../assets/images/appstore.png"
+                alt="App Store"
+                width="150"
+              />
+              <img
+                src="../assets/images/huaweistore1.png"
+                alt="AppGallery"
+                width="150"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <h6 class="text-muted">Restaurants</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href=""> Taboon </a>
+              </li>
+              <li>
+                <a href=""> Planet Africa </a>
+              </li>
+              <li>
+                <a href=""> Lan Yuan - Maadi </a>
+              </li>
+              <li>
+                <a href=""> Hadirmout </a>
+              </li>
+              <li>
+                <a href=""> Wild House By Crazy Food </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">More Restaurants...</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <h6 class="text-muted">Popular Cuisines</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href=""> Italian </a>
+              </li>
+              <li>
+                <a href=""> Mexican </a>
+              </li>
+              <li>
+                <a href=""> Sandwiches </a>
+              </li>
+              <li>
+                <a href=""> Japanese </a>
+              </li>
+              <li>
+                <a href=""> Pizza </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">More Cuisines...</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <h6 class="text-muted">Popular Areas</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href=""> Adailiya </a>
+              </li>
+              <li>
+                <a href=""> Abdulla Al-Salem </a>
+              </li>
+              <li>
+                <a href=""> Bnaid Al-Qar </a>
+              </li>
+              <li>
+                <a href=""> Doha </a>
+              </li>
+              <li>
+                <a href=""> Yarmouk </a>
+              </li>
+              <li>
+                <a href="#" class="footer-link">More Areas...</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="d-flex justify-content-between align-items-center border-top pt-4 mt-4 flex-wrap"
+        >
+          <p class="mb-0 text-muted socile-links">
+            © 2023 Eatme All right reserved
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#" class="socile-links fs-5 mb-0"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="#" class="socile-links fs-5 mb-0"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="socile-links fs-5 mb-0"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="socile-links fs-5 mb-0"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- sidebar.html -->
+    <div class="sidebar p-3" id="sidebar">
+      <div class="user-info align-items-center gap-2 d-flex mb-4">
+        <div class="avatar mb-2">
+          <img
+            src="./assets/images/avatar.svg"
+            class="rounded-circle"
+            alt="User Avatar"
+          />
+        </div>
+        <div>
+          <p class="mb-0 text-muted">Welcome !</p>
+          <h6 class="fw-bold mb-0">Mohaned Tarek</h6>
+        </div>
+      </div>
+
+      <ul class="nav slide-nav flex-column mb-4">
+        <li class="nav-item mb-2">
+          <a href="#" class="gap-2 px-0 nav-link d-flex align-items-center">
+            <svg
+              width="17"
+              height="20"
+              viewBox="0 0 17 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.50879 5.11328H11.5088M5.50879 9.11328H11.5088M9.50879 13.1133H11.5088M1.50879 19.1133V3.11328C1.50879 2.58285 1.7195 2.07414 2.09458 1.69907C2.46965 1.32399 2.97836 1.11328 3.50879 1.11328H13.5088C14.0392 1.11328 14.5479 1.32399 14.923 1.69907C15.2981 2.07414 15.5088 2.58285 15.5088 3.11328V19.1133L12.5088 17.1133L10.5088 19.1133L8.50879 17.1133L6.50879 19.1133L4.50879 17.1133L1.50879 19.1133Z"
+                stroke="#02AFA7"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Orders
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="#" class="gap-2 px-0 nav-link d-flex align-items-center">
+            <svg
+              width="21"
+              height="18"
+              viewBox="0 0 21 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.0086 9.68534L10.5086 17.1133L3.0086 9.68534C2.51391 9.20395 2.12424 8.62535 1.86415 7.98597C1.60406 7.34659 1.47916 6.66029 1.49734 5.97027C1.51552 5.28025 1.67636 4.60147 1.96976 3.97667C2.26315 3.35187 2.68274 2.79459 3.20209 2.33992C3.72144 1.88524 4.32931 1.54302 4.98741 1.33482C5.64552 1.12661 6.33961 1.05692 7.02597 1.13014C7.71233 1.20335 8.3761 1.41789 8.97548 1.76024C9.57485 2.10259 10.0969 2.56534 10.5086 3.11934C10.9221 2.56936 11.4447 2.11066 12.0437 1.77194C12.6427 1.43322 13.3051 1.22179 13.9895 1.15086C14.674 1.07993 15.3657 1.15103 16.0214 1.35973C16.6771 1.56842 17.2826 1.91021 17.8002 2.3637C18.3177 2.81719 18.736 3.37262 19.029 3.99523C19.322 4.61784 19.4833 5.29422 19.5029 5.98204C19.5225 6.66987 19.3999 7.35433 19.1427 7.99259C18.8856 8.63084 18.4995 9.20916 18.0086 9.69134"
+                stroke="#02AFA7"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Favorites
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="#" class="gap-2 px-0 nav-link d-flex align-items-center">
+            <svg
+              width="19"
+              height="21"
+              viewBox="0 0 19 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.1658 14.7702L10.9228 19.0132C10.5478 19.3879 10.0394 19.5983 9.50929 19.5983C8.97921 19.5983 8.47081 19.3879 8.09579 19.0132L3.85179 14.7702C2.73301 13.6514 1.97113 12.2259 1.66248 10.6741C1.35383 9.12226 1.51228 7.51375 2.1178 6.05196C2.72331 4.59018 3.74869 3.34077 5.06427 2.46174C6.37986 1.58271 7.92656 1.11353 9.50879 1.11353C11.091 1.11353 12.6377 1.58271 13.9533 2.46174C15.2689 3.34077 16.2943 4.59018 16.8998 6.05196C17.5053 7.51375 17.6638 9.12226 17.3551 10.6741C17.0465 12.2259 16.2846 13.6514 15.1658 14.7702Z"
+                stroke="#02AFA7"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Saved Address
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="#" class="gap-2 px-0 nav-link d-flex align-items-center">
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1_6424)">
+                <path
+                  d="M15.5088 5.11328V7.11328"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15.5088 11.1133V13.1133"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15.5088 17.1133V19.1133"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5.50879 5.11328H19.5088C20.0392 5.11328 20.5479 5.32399 20.923 5.69907C21.2981 6.07414 21.5088 6.58285 21.5088 7.11328V10.1133C20.9784 10.1133 20.4696 10.324 20.0946 10.6991C19.7195 11.0741 19.5088 11.5828 19.5088 12.1133C19.5088 12.6437 19.7195 13.1524 20.0946 13.5275C20.4696 13.9026 20.9784 14.1133 21.5088 14.1133V17.1133C21.5088 17.6437 21.2981 18.1524 20.923 18.5275C20.5479 18.9026 20.0392 19.1133 19.5088 19.1133H5.50879C4.97836 19.1133 4.46965 18.9026 4.09458 18.5275C3.7195 18.1524 3.50879 17.6437 3.50879 17.1133V14.1133C4.03922 14.1133 4.54793 13.9026 4.923 13.5275C5.29808 13.1524 5.50879 12.6437 5.50879 12.1133C5.50879 11.5828 5.29808 11.0741 4.923 10.6991C4.54793 10.324 4.03922 10.1133 3.50879 10.1133V7.11328C3.50879 6.58285 3.7195 6.07414 4.09458 5.69907C4.46965 5.32399 4.97836 5.11328 5.50879 5.11328Z"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_6424">
+                  <rect
+                    width="24"
+                    height="24"
+                    fill="white"
+                    transform="translate(0.508789 0.113281)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+            Promotions
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a href="#" class="gap-2 px-0 nav-link d-flex align-items-center">
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_1_6424)">
+                <path
+                  d="M15.5088 5.11328V7.11328"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15.5088 11.1133V13.1133"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M15.5088 17.1133V19.1133"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M5.50879 5.11328H19.5088C20.0392 5.11328 20.5479 5.32399 20.923 5.69907C21.2981 6.07414 21.5088 6.58285 21.5088 7.11328V10.1133C20.9784 10.1133 20.4696 10.324 20.0946 10.6991C19.7195 11.0741 19.5088 11.5828 19.5088 12.1133C19.5088 12.6437 19.7195 13.1524 20.0946 13.5275C20.4696 13.9026 20.9784 14.1133 21.5088 14.1133V17.1133C21.5088 17.6437 21.2981 18.1524 20.923 18.5275C20.5479 18.9026 20.0392 19.1133 19.5088 19.1133H5.50879C4.97836 19.1133 4.46965 18.9026 4.09458 18.5275C3.7195 18.1524 3.50879 17.6437 3.50879 17.1133V14.1133C4.03922 14.1133 4.54793 13.9026 4.923 13.5275C5.29808 13.1524 5.50879 12.6437 5.50879 12.1133C5.50879 11.5828 5.29808 11.0741 4.923 10.6991C4.54793 10.324 4.03922 10.1133 3.50879 10.1133V7.11328C3.50879 6.58285 3.7195 6.07414 4.09458 5.69907C4.46965 5.32399 4.97836 5.11328 5.50879 5.11328Z"
+                  stroke="#02AFA7"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_1_6424">
+                  <rect
+                    width="24"
+                    height="24"
+                    fill="white"
+                    transform="translate(0.508789 0.113281)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+            Account Settings
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="gap-2 px-0 nav-link d-flex align-items-center">
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.5088 3.11328V12.1133"
+                stroke="#02AFA7"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M18.1688 7.45325C19.2867 8.57242 20.0478 9.9979 20.3557 11.5495C20.6637 13.1011 20.5047 14.7092 19.899 16.1705C19.2932 17.6318 18.2678 18.8807 16.9524 19.7593C15.637 20.638 14.0907 21.107 12.5088 21.107C10.9269 21.107 9.38056 20.638 8.06516 19.7593C6.74976 18.8807 5.72437 17.6318 5.11861 16.1705C4.51285 14.7092 4.3539 13.1011 4.66186 11.5495C4.96982 9.9979 5.73086 8.57242 6.84879 7.45325"
+                stroke="#02AFA7"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Sign Out
+          </a>
+        </li>
+      </ul>
+
+      <div class="about-us mb-3">
+        <a href=""> <p class="mb-1 about-us-item">About Us</p> </a>
+        <a href=""> <p class="mb-2 about-us-item">Add your restaurant</p> </a>
+      </div>
+
+      <div class="app-section">
+        <div
+          class="d-flex align-items-center justify-content-center gap-2 mb-2 dilavary-item"
+        >
+          <img src="./assets/images/dilavary.svg" alt="" class="img-fluid" />
+          <span class="text">Discover the new Eatme app</span>
+        </div>
+        <div class="d-flex flex-column align-items-start gap-2 images-list">
+          <a href="#">
+            <img
+              src="./assets/images/logo_huaweistore1.png"
+              class="img-fluid"
+              alt="Google Play"
+            />
+          </a>
+          <a href="#">
+            <img
+              src="./assets/images/logo_appstore.png"
+              class="img-fluid"
+              alt="App Store"
+            />
+          </a>
+          <a href="#">
+            <img
+              src="./assets/images/logo_playstore.png"
+              class="img-fluid"
+              alt="App Gallery"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <script src="./assets/js/plugins/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="./assets/js/plugins/swiper.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
