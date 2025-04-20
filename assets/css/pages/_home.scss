@@ -126,6 +126,7 @@
     }
   }
 
+
   .offer-card {
     background: #f9f9f9;
     border-radius: 1rem;
@@ -257,5 +258,8 @@
         }
       }
     }
+  }
+  @include media(556) {
+    padding: 0;
   }
 }

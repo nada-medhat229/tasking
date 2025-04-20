@@ -454,6 +454,11 @@ html[dir=rtl] .sidebar.open {
   text-decoration: line-through;
   color: #aaa;
 }
+@media (max-width: 556px) {
+  .flash-offers {
+    padding: 0;
+  }
+}
 
 .section-title .title {
   font-size: 48px;
