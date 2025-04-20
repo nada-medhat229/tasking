@@ -33,6 +33,20 @@ const swiper = new Swiper(".category-swiper", {
     1024: { slidesPerView: 8 },
   },
 });
+const offerswiper =new Swiper('.offer-swiper', {
+  slidesPerView: 1,
+  spaceBetween: 16,
+  grabCursor: true,
+  breakpoints: {
+    640: { slidesPerView: 3 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+  },
+});
+
 const featuredswiper = new Swiper(".featured-swiper", {
   slidesPerView: 1.2,
   spaceBetween: 12,
